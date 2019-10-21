@@ -45,18 +45,8 @@
      * @param {object} query 查询参数
      * @param {boolean} checkEnv 检查环境
      */
-    oepnWebPage(url, query, checkEnv = true) {
+    openWebPage(url, query, checkEnv = true) {
       let oepnUrl = url;
-
-      // 是否内部链接
-      if (!!checkEnv && (oepnUrl.includes("//static1.wdai.com/heyjie/") || oepnUrl.includes("//m.heyjie.cn/"))) {
-        // 根据环境替换跳转地址
-        if (config.deployEnv == "release") {
-          oepnUrl = oepnUrl.replace("//static1.wdai.com/heyjie/m/", "//m.heyjie.cn/");
-        } else {
-          oepnUrl = oepnUrl.replace("//m.heyjie.cn/", "//static1.wdai.com/heyjie/m/");
-        }
-      }
 
       // 解析hash
       const hasHash = url.includes("#/");
@@ -88,7 +78,6 @@
 
       // 拼接url
       const finalUrl = queryUrl.split("?")[0] + queryString + hash;
-      console.log(finalUrl)
 
       // 跳转webView
       wx.navigateTo({
