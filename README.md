@@ -43,9 +43,8 @@
      * 使用webview打开url
      * @param {string} url url
      * @param {object} query 查询参数
-     * @param {boolean} checkEnv 检查环境
      */
-    openWebPage(url, query, checkEnv = true) {
+    openWebPage(url, query) {
       let oepnUrl = url;
 
       // 解析hash
